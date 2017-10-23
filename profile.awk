@@ -25,6 +25,13 @@ BEGIN{
 		if(length($i)==0){
 			nullcount[i]++;
 		}
+		
+		#Pattern analysis
+		c=$i
+		gsub("[[:digit:]]","9",c)
+		gsub("[[:alpha:]]","Z",c)
+		patterncount[i][c]++;
+		
 	}
 	
 }
@@ -35,5 +42,13 @@ END{
 	print "Field","Minimum","Maximum","Average","Null Count"
 	for(i=1;i <= NF; i++){
 		print i,minsize[i],maxsize[i],totalsize[i]/recordCounter, nullcount[i];
+	}
+	
+	for(i=1;i <= NF; i++){
+		print "Field "i" Patterns"
+		print "Count","Pattern"
+		for(t in patterncount[i]){
+			print patterncount[i][t],t
+		}
 	}
 }
