@@ -1,3 +1,5 @@
+# Works with GAWK
+
 BEGIN{
 	beginflag=1;
 	recordCounter=0
@@ -27,10 +29,10 @@ BEGIN{
 		}
 		
 		#Pattern analysis
-		c=$i
-		gsub("[[:digit:]]","9",c)
-		gsub("[[:alpha:]]","Z",c)
-		patterncount[i][c]++;
+		c=$i;
+		gsub("[[:digit:]]","9",c);
+		gsub("[[:alpha:]]","Z",c);
+		patterncount[i][c]++
 		
 	}
 	
